@@ -1,3 +1,9 @@
+
+Can not register module from iOS.
+See issue: https://github.com/InsertKoinIO/koin/issues/1108
+
+
+
 # Kotlin Multiplatform app template
 
 [![official project](http://jb.gg/badges/official.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
