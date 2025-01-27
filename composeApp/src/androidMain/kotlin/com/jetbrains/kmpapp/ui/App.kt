@@ -1,4 +1,4 @@
-package com.jetbrains.kmpapp
+package com.jetbrains.kmpapp.ui
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -9,16 +9,11 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.toRoute
-import com.jetbrains.kmpapp.screens.DetailScreen
-import com.jetbrains.kmpapp.screens.ListScreen
+import com.jetbrains.kmpapp.ui.screens.MainScreen
 import kotlinx.serialization.Serializable
 
 @Serializable
 object ListDestination
-
-@Serializable
-data class DetailDestination(val objectId: Int)
 
 @Composable
 fun App() {
@@ -29,17 +24,7 @@ fun App() {
             val navController = rememberNavController()
             NavHost(navController = navController, startDestination = ListDestination) {
                 composable<ListDestination> {
-                    ListScreen(navigateToDetails = { objectId ->
-                        navController.navigate(DetailDestination(objectId))
-                    })
-                }
-                composable<DetailDestination> { backStackEntry ->
-                    DetailScreen(
-                        objectId = backStackEntry.toRoute<DetailDestination>().objectId,
-                        navigateBack = {
-                            navController.popBackStack()
-                        }
-                    )
+                    MainScreen()
                 }
             }
         }
